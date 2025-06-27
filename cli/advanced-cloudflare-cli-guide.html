@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🚀 Advanced Cloudflare CLI & API গাইড (বাংলা)</title>
+<style>
+  body {font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background:#fafafa; color:#222; margin:0; padding:20px;}
+  h1,h2,h3 {color:#1e40af;}
+  .section {background:#fff; border-left:6px solid #2563eb; padding:20px; margin-bottom:20px; box-shadow:0 2px 8px rgb(0 0 0 / 0.05);}
+  pre {background:#1e293b; color:#d1d5db; padding:15px; border-radius:8px; overflow-x:auto; white-space:pre-wrap;}
+  code {color:#fbbf24;}
+  a {color:#2563eb; text-decoration:none;}
+  a:hover {text-decoration:underline;}
+  ul {margin-top:0;}
+</style>
+</head>
+<body>
+
+<h1>🚀 Advanced Cloudflare CLI & API গাইড (বাংলা)</h1>
+
+<div class="section">
+  <h2>১. Wrangler CLI ইনস্টল ও আপডেট</h2>
+  <pre><code>npm install -g wrangler@latest
+wrangler --version</code></pre>
+  <p>নতুন ফিচার পেতে Wrangler সর্বদা আপডেটেড রাখো।</p>
+</div>
+
+<div class="section">
+  <h2>২. Wrangler কনফিগারেশন ফাইল (<code>wrangler.toml</code>)</h2>
+  <pre><code>[name = "my-worker"]
+type = "javascript"
+
+account_id = "YOUR_ACCOUNT_ID"
+workers_dev = true
+route = ""
+zone_id = ""
+
+[vars]
+API_KEY = "your_api_key"
+ENVIRONMENT = "production"
+
+[kv_namespaces]
+binding = "MY_KV"
+id = "your_kv_namespace_id"
+
+[triggers]
+crons = ["0 0 * * *"]  # প্রতি রাত ১২ টায় Cron Job রান</code></pre>
+  <p><strong>বিস্তারিত কনফিগারেশন দিয়ে Cloudflare Worker কে সম্পূর্ণ নিয়ন্ত্রণ করতে পারবে।</strong></p>
+</div>
+
+<div class="section">
+  <h2>৩. Cloudflare Workers এ Environment Variables ও KV Storage ব্যবহার</h2>
+  <pre><code>export default {
+  async fetch(request, env) {
+    // Env vars
+    const apiKey = env.API_KEY;
+
+    // KV থেকে ডাটা পড়া
+    const value = await env.MY_KV.get("some-key");
+
+    return new Response(`API Key: ${apiKey} & KV Value: ${value}`);
+  }
+}</code></pre>
+  <p>KV Storage এ ডাটা সংরক্ষণ/পঠনের জন্য Wrangler TOML এ <code>kv_namespaces</code> সেট করতে হবে।</p>
+</div>
+
+<div class="section">
+  <h2>৪. Durable Objects দিয়ে Stateful Logic</h2>
+  <pre><code>export class Counter {
+  constructor(state, env) {
+    this.state = state;
+  }
+  async fetch(request) {
+    let value = await this.state.storage.get("count") || 0;
+    value++;
+    await this.state.storage.put("count", value);
+    return new Response(`Counter: ${value}`);
+  }
+}
+
+export default {
+  async fetch(request, env) {
+    let id = env.COUNTER.idFromName("A");
+    let obj = env.COUNTER.get(id);
+    return obj.fetch(request);
+  }
+};</code></pre>
+  <p>Durable Objects দিয়ে Worker-এ Stateful API তৈরি করা যায়।</p>
+</div>
+
+<div class="section">
+  <h2>৫. Cloudflare API দিয়ে Firewall Rule ও Cache Purge অটোমেশন</h2>
+  <pre><code># Firewall Rule তৈরি
+curl -X POST "https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/firewall/rules" \
+ -H "Authorization: Bearer YOUR_API_TOKEN" \
+ -H "Content-Type: application/json" \
+ --data '[{
+   "action": "block",
+   "filter": { "expression": "ip.src eq 1.2.3.4" },
+   "description": "Block IP 1.2.3.4"
+ }]'
+
+# Cache Purge
+curl -X POST "https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/purge_cache" \
+ -H "Authorization: Bearer YOUR_API_TOKEN" \
+ -H "Content-Type: application/json" \
+ --data '{"purge_everything":true}'</code></pre>
+  <p><strong>API Token অবশ্যই প্রয়োজন, এবং Token scope সঠিকভাবে সেট করতে হবে।</strong></p>
+</div>
+
+<div class="section">
+  <h2>৬. CI/CD স্ক্রিপ্ট দিয়ে Wrangler অটোমেশন</h2>
+  <pre><code>#!/bin/bash
+echo "Building Worker..."
+wrangler build
+
+echo "Publishing to Cloudflare..."
+wrangler publish --env production
+
+echo "Purging Cache..."
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache" \
+  -H "Authorization: Bearer $CF_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{"purge_everything":true}'
+
+echo "Deployment Complete!"</code></pre>
+  <p>এই স্ক্রিপ্ট CI/CD pipeline এ ব্যবহার করা যায় যেমন GitHub Actions বা GitLab CI।</p>
+</div>
+
+<div class="section">
+  <h2>৭. নিরাপত্তা ও টোকেন ব্যবস্থাপনা</h2>
+  <ul>
+    <li>API Token তৈরি করো <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">Cloudflare Dashboard</a> থেকে।</li>
+    <li>টোকেনের Permission শুধুমাত্র প্রয়োজনীয় জায়গায় দিন।</li>
+    <li>টোকেন environment variables (env) হিসেবে সংরক্ষণ করো, কখনো সোর্সকোডে রাখো না।</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>৮. রেফারেন্স ও ডকুমেন্টেশন</h2>
+  <ul>
+    <li><a href="https://developers.cloudflare.com/workers/" target="_blank">Cloudflare Workers ডকুমেন্টেশন</a></li>
+    <li><a href="https://developers.cloudflare.com/api/" target="_blank">Cloudflare API ডকুমেন্টেশন</a></li>
+    <li><a href="https://developers.cloudflare.com/pages/platform/build-configuration" target="_blank">Cloudflare Pages Build Config</a></li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>🔥 উপসংহার</h2>
+  <p>
+    Cloudflare CLI ও API এর মাধ্যমে তুমি খুব সহজেই <strong>পুরো Cloudflare প্ল্যাটফর্ম স্বয়ংক্রিয়, নিরাপদ ও প্রফেশনালি ম্যানেজ</strong> করতে পারবে।  
+    চাইলে আমি তোমার জন্য <strong>ফুল ফিচার সহ প্রজেক্ট স্ট্রাকচার, স্ক্রিপ্ট এবং ডেমো কোড</strong> তৈরি করে দিতে পারি।  
+    কেবল বলো, কোন ফিচার নিয়ে কাজ শুরু করতে চাও!
+  </p>
+</div>
+
+</body>
+</html>

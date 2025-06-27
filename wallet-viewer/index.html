@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web3 Wallet Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🌐 Web3 Wallet Connect</h1>
+  <button id="connectBtn">🔗 Connect MetaMask</button>
+  <div id="wallet">Wallet Address: Not connected</div>
+  <div id="balance">Balance: 0 ETH</div>
+
+  <script>
+    const connectBtn = document.getElementById('connectBtn');
+    const walletDiv = document.getElementById('wallet');
+    const balanceDiv = document.getElementById('balance');
+
+    async function getBalance(account) {
+      const balance = await ethereum.request({
+        method: "eth_getBalance",
+        params: [account, "latest"]
+      });
+      const eth = parseInt(balance, 16) / 1e18;
+      balanceDiv.innerText = `Balance: ${eth} ETH`;
+    }
+
+    connectBtn.onclick = async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0];
+        walletDiv.innerText = `Wallet Address: ${account}`;
+        getBalance(account);
+      } else {
+        alert('MetaMask not detected!');
+      }
+    };
+  </script>
+</body>
+</html>

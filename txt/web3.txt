@@ -1,0 +1,359 @@
+নিচে আপনি পাচ্ছেন 🔥 Web3 World Full Advanced Roadmap & Guideline এর একটি সম্পূর্ণ Markdown টেক্সট (সম্পন্ন) — যেখানে wallet integration অংশে আরও অনেক জনপ্রিয় ওয়ালেট যুক্ত করা হয়েছে এবং অন্যান্য অংশও উন্নত ও বিস্তারিত করা হয়েছে।
+
+
+---
+
+# 🌐 Web3 World Full Advanced Roadmap & Complete Guideline (2025)
+
+> 🚀 একটি পূর্ণাঙ্গ ও প্রফেশনাল রোডম্যাপ যা আপনাকে Web3 দুনিয়ায় শূন্য থেকে মাস্টার লেভেলে পৌঁছাতে সহায়তা করবে।
+
+---
+
+## 🧱 1. Web3 মূল ধারণা (Basics)
+- Web1 vs Web2 vs Web3
+- Blockchain কী এবং কিভাবে কাজ করে
+- Decentralization, Trustless Systems, Transparency
+- Public vs Private Blockchain
+- Transactions, Gas, Blocks, Nodes, Nonce
+- Wallets, Mnemonics, Private/Public Key
+
+✅ শিখুন:
+- MetaMask, TrustWallet ব্যবহার
+- Etherscan, BSCScan, PolygonScan ব্যবহার
+
+---
+
+## 👨‍💻 2. প্রোগ্রামিং ল্যাংগুয়েজ
+
+### 🔹 Frontend:
+- HTML, CSS, JavaScript
+- React.js / Next.js
+- TailwindCSS / Chakra UI
+
+### 🔹 Backend:
+- Node.js + Express.js
+- Python (FastAPI, Flask)
+- TypeScript (Safe Dev)
+
+### 🔹 Smart Contract:
+- Solidity (Ethereum, Polygon)
+- Vyper (Pythonic Alternative)
+- Rust (Solana, Near)
+- Cairo (StarkNet)
+
+---
+
+## 🧰 3. টুলস ও CLI সাপোর্ট
+
+| Tool        | Description                         |
+|-------------|-------------------------------------|
+| Hardhat     | Smart contract dev/test tool       |
+| Truffle     | Ethereum dApp suite                |
+| Ganache     | Local blockchain node              |
+| Remix IDE   | Browser-based Solidity IDE         |
+| Ethers.js   | Web3 library for Ethereum          |
+| Web3.js     | Ethereum JavaScript API            |
+| IPFS        | Decentralized file storage         |
+| MetaMask    | Wallet interaction                 |
+
+---
+
+## 📜 4. Smart Contract Development
+- Hardhat / Truffle Setup
+- Solidity ERC Standards (ERC20, ERC721, ERC1155)
+- Contract Deployment (Local → Testnet → Mainnet)
+
+✅ Mini Projects:
+- Token Deployment
+- NFT Minting & Transfer
+- Crowdfunding Contract
+- DAO Voting System
+
+---
+
+## 🌉 5. Wallet Integration
+
+### ✅ Primary Wallets:
+- MetaMask
+- Trust Wallet
+- Coinbase Wallet
+- Binance Wallet
+- Rainbow Wallet
+- Argent Wallet
+- Phantom Wallet (for Solana)
+- Exodus Wallet
+- Frame Wallet (Desktop)
+- Zerion Wallet
+- Rabby Wallet
+
+### 🔌 Connection Tools:
+- WalletConnect
+- Web3Modal
+- RainbowKit
+- Wagmi Hooks (for React)
+
+### 🔐 Functions to Handle:
+- Connect Wallet (EIP-1193)
+- Sign Messages
+- Send Transactions
+- Track Balances & NFTs
+- Switch Network
+
+---
+
+## 💻 6. DApp Frontend Integration
+- React + Ethers.js / Web3.js
+- TailwindCSS + UI/UX Toolkit
+- Wallet Connection Buttons
+- Contract Read/Write Interaction
+- Dynamic Gas Estimation
+- Toast/Error Notifications
+
+---
+
+## 🧪 7. Testing & Deployment
+
+```bash
+npx hardhat compile
+npx hardhat test
+npx hardhat run scripts/deploy.js --network goerli
+npx hardhat verify --network goerli <contract-address>
+
+✅ Remix → Quick Deploy
+✅ Hardhat → Automated Deployment
+✅ Tenderly → Real-time Monitoring
+
+
+---
+
+📦 8. Decentralized Storage & Hosting
+
+IPFS (CLI, Pinata, Web3.Storage)
+
+Filecoin (Long-term storage)
+
+Arweave (Permanent Web)
+
+NFT.Storage (metadata + media)
+
+ENS + IPFS = DApp Hosting
+
+
+✅ Example:
+
+Upload DApp via npx web3.storage
+
+Host React build on IPFS
+
+Link with .eth ENS domain
+
+
+
+---
+
+🛡 9. Security & Audit
+
+🔐 Common Attacks:
+
+Reentrancy
+
+Overflow/Underflow
+
+Gas griefing
+
+Flash loan attacks
+
+
+
+🔍 Tools:
+
+Slither (static analysis)
+
+MythX (smart contract audit)
+
+Tenderly (debug/monitor)
+
+OpenZeppelin Defender
+
+ChainSecurity
+
+
+✅ Bug Bounty Platforms:
+
+Code4rena
+
+Immunefi
+
+HackenProof
+
+
+
+---
+
+📊 10. Data & API Access
+
+Service	Purpose
+
+Infura	RPC Node + IPFS
+Alchemy	Web3 Infra & APIs
+Moralis	Auth, Web3 APIs
+QuickNode	Fast RPC & analytics
+The Graph	Subgraph & Indexing
+
+
+
+---
+
+🛠 11. Web3 DevOps
+
+Dockerize Smart Contract Projects
+
+GitHub Actions for CI/CD
+
+IPFS Pinning Scripts
+
+Auto Deploy on Commit
+
+ENS + IPFS Gateway integration
+
+
+
+---
+
+🌐 12. Popular Blockchain Networks
+
+Chain	Token	Dev Lang	Advantage
+
+Ethereum	ETH	Solidity	Most Popular L1
+Polygon	MATIC	Solidity	L2, Fast & Cheap
+BNB Chain	BNB	Solidity	Popular for DeFi
+Solana	SOL	Rust	High TPS
+Near	NEAR	Rust	Easy to Use
+StarkNet	ETH	Cairo	ZK Rollup
+Optimism	ETH	Solidity	Layer 2 scaling
+Avalanche	AVAX	Solidity	Custom Subnets
+
+
+
+---
+
+💡 13. Portfolio Projects Ideas
+
+✅ ERC20 Token with Airdrop
+
+✅ NFT Marketplace with Metadata Storage
+
+✅ DAO Governance Voting System
+
+✅ Web3 Login System (Sign-In With Ethereum)
+
+✅ DeFi Yield Farming DApp
+
+✅ Web3 Social Network (Lens Protocol API)
+
+✅ On-chain Chat App (Pub/Sub via smart contracts)
+
+
+
+---
+
+💼 14. Freelancing & Monetization
+
+🔹 Platforms:
+
+Fiverr, Upwork, PeoplePerHour
+
+Gitcoin, Superteam, Questbook
+
+Dorahacks, Bounties, Layer3
+
+
+🔹 Roles:
+
+Smart Contract Developer
+
+dApp Frontend Engineer
+
+Web3 Educator / Tutor
+
+Community Manager
+
+DAO Contributor
+
+Web3 Researcher / Technical Writer
+
+
+
+---
+
+📱 15. Mobile Web3 CLI with Termux
+
+pkg update && pkg upgrade
+pkg install nodejs git python
+npm install -g hardhat truffle
+
+# Optional: IPFS (manual)
+wget https://dist.ipfs.tech/kubo/<version>/kubo_<version>_linux-arm64.tar.gz
+
+✅ Develop Web3 DApp using Termux
+✅ Deploy contract to testnet
+✅ Upload to IPFS via CLI
+
+
+---
+
+📚 16. Best Learning Resources
+
+Solidity
+
+Ethereum Dev Portal
+
+Ethers.js
+
+Web3.js
+
+Moralis
+
+IPFS Docs
+
+Chainlist
+
+LearnWeb3 DAO
+
+Speed Run Ethereum
+
+
+
+---
+
+✅ Final Checklist
+
+[x] Master Blockchain & Ethereum Structure
+
+[x] Learn Solidity + Smart Contract Tools
+
+[x] Build Real DApps and Deploy to Testnet/Mainnet
+
+[x] Use IPFS + ENS to Host DApps
+
+[x] Audit Code and Practice Security
+
+[x] Build Portfolio Projects & Apply for Grants
+
+[x] Freelance or Join a DAO/Web3 Startup
+
+
+
+---
+
+> 🎯 “Web3 শেখো, তৈরি করো, শেয়ার করো, উপার্জন করো —  decentralized ভবিষ্যৎ তৈরি করো।”
+
+
+
+---
+
+✅ আপনি চাইলে আমি এই Markdown টেক্সটটি `.md` ফাইল হিসেবে সরবরাহ করতে পারি, যা আপনি **GitHub README**, **Termux Markdown Viewer**, বা **Blog Post** হিসেবেও ব্যবহার করতে পারবেন।
+
+**বলুন:** `🔗 .md ফাইল তৈরি করো`  
+আমি সরাসরি ফাইল বানিয়ে ডাউনলোড লিংক দিয়ে দেব।
+

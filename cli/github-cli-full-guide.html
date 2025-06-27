@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub CLI পূর্ণ বাংলা গাইড</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: sans-serif; background: #f9f9f9; color: #222; padding: 20px; }
+    h1, h2 { color: #0a5; }
+    .step { background: white; padding: 20px; margin-bottom: 20px; border-left: 5px solid #0a5; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
+    pre, code { background: #eee; padding: 10px; display: block; overflow-x: auto; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+<h1>📘 GitHub CLI শিখুন - সম্পূর্ণ বাংলায়</h1>
+
+<div class="step">
+  <h2>ধাপ ১: Git ও GitHub CLI ইনস্টল করুন</h2>
+  <pre><code>pkg update && pkg upgrade
+pkg install git
+pkg install gh</code></pre>
+</div>
+
+<div class="step">
+  <h2>ধাপ ২: GitHub CLI Login করুন</h2>
+  <p>OAuth দিয়ে লগইন করা সবচেয়ে সহজ:</p>
+  <pre><code>gh auth login</code></pre>
+</div>
+
+<div class="step">
+  <h2>ধাপ ৩: Git Config সেট করুন</h2>
+  <pre><code>git config --global user.name "তোমার নাম"
+git config --global user.email "your@email.com"</code></pre>
+</div>
+
+<div class="step">
+  <h2>ধাপ ৪: নতুন প্রজেক্ট তৈরি করুন</h2>
+  <pre><code>mkdir my-project && cd my-project
+git init
+gh repo create my-project --public --source=. --remote=origin --push</code></pre>
+</div>
+
+<div class="step">
+  <h2>ধাপ ৫: ফাইল যোগ ও আপলোড করুন</h2>
+  <pre><code>echo "&lt;h1&gt;Hello GitHub&lt;/h1&gt;" > index.html
+git add .
+git commit -m "প্রথম কমিট"
+git push -u origin main</code></pre>
+</div>
+
+<div class="step">
+  <h2>ধাপ ৬: নতুন ব্রাঞ্চ তৈরি এবং মার্জ করুন</h2>
+  <pre><code>git checkout -b dev
+# কিছু কোড পরিবর্তন করুন
+git add .
+git commit -m "নতুন ফিচার"
+git push origin dev
+
+# Pull Request তৈরি করুন
+gh pr create --base main --head dev --title "Feature Merge" --body "Ready to merge"
+
+# মার্জ করুন
+gh pr merge</code></pre>
+</div>
+
+<div class="step">
+  <h2>ধাপ ৭: ইস্যু তৈরি ও ট্র্যাকিং</h2>
+  <pre><code>gh issue create --title "Bug in Navbar" --body "Navbar doesn't work on mobile"
+gh issue list</code></pre>
+</div>
+
+<div class="step">
+  <h2>ধাপ ৮: প্রজেক্ট ক্লোন ও ফোর্ক</h2>
+  <pre><code>git clone https://github.com/username/repo.git
+gh repo fork</code></pre>
+</div>
+
+<div class="step">
+  <h2>ধাপ ৯: রিলিজ তৈরি করুন</h2>
+  <pre><code>gh release create v1.0 ./index.html --title "v1.0" --notes "প্রথম রিলিজ"</code></pre>
+</div>
+
+<div class="step">
+  <h2>ধাপ ১০: GitHub Actions লগ চেক করুন</h2>
+  <pre><code>gh run list
+gh run view</code></pre>
+</div>
+
+<div class="step">
+  <h2>🎯 শেষ কথা</h2>
+  <ul>
+    <li>Git দিয়ে লোকাল প্রজেক্ট ম্যানেজ করুন</li>
+    <li>GitHub CLI দিয়ে সব কাজ করুন - GUI ছাড়াই</li>
+    <li>প্রতিদিন ১টি ছোট প্রজেক্ট GitHub এ আপলোড করুন</li>
+    <li>Issues, PR, Releases – সব CLI থেকে করুন</li>
+  </ul>
+  <p><strong>তুমি এখন একজন Web3 Ready GitHub Power User!</strong></p>
+</div>
+
+</body>
+</html>

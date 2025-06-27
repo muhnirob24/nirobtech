@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌐 Galxe Airdrop Tracker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f0f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 720px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #43a047;
+    }
+    .info-box {
+      margin-top: 25px;
+      background: #e8f5e9;
+      padding: 20px;
+      border-left: 5px solid #4caf50;
+    }
+    .wallet-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .wallet-section button {
+      width: auto;
+      margin-bottom: 10px;
+    }
+    .wallet-address {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>🌐 Galxe Web3 Account Setup ✅</h1><div class="wallet-section">
+  <button onclick="connectWallet()">🦊 Connect MetaMask</button>
+  <p id="walletAddress">Not connected</p>
+</div>
+
+<form id="accountForm">
+  <input type="text" id="twitter" placeholder="🐦 Twitter Username (@yourhandle)" required />
+  <input type="text" id="discord" placeholder="💬 Discord Username (User#1234)" required />
+  <button type="submit">✅ Save My Info</button>
+</form>
+
+<div class="info-box" id="infoResult" style="display:none;">
+  <h3>🎉 Your Info:</h3>
+  <p><strong>Wallet:</strong> <span id="resWallet"></span></p>
+  <p><strong>Twitter:</strong> <span id="resTwitter"></span></p>
+  <p><strong>Discord:</strong> <span id="resDiscord"></span></p>
+  <p>🚀 Now go to <a href="https://galxe.com" target="_blank">Galxe</a> and start real Web3 tasks!</p>
+</div>
+
+  </div>  <script>
+    async function connectWallet() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          const walletAddress = accounts[0];
+          document.getElementById('walletAddress').textContent = walletAddress;
+        } catch (err) {
+          alert('🛑 Error: ' + err.message);
+        }
+      } else {
+        alert('🦊 MetaMask not found! Please install it first.');
+      }
+    }
+
+    document.getElementById('accountForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const twitter = document.getElementById('twitter').value;
+      const discord = document.getElementById('discord').value;
+      const wallet = document.getElementById('walletAddress').textContent;
+
+      if (wallet === 'Not connected') {
+        alert('🦊 Please connect MetaMask first.');
+        return;
+      }
+
+      // Display Info
+      document.getElementById('resWallet').textContent = wallet;
+      document.getElementById('resTwitter').textContent = twitter;
+      document.getElementById('resDiscord').textContent = discord;
+      document.getElementById('infoResult').style.display = 'block';
+
+      // Save to localStorage (or send to server in future)
+      const userInfo = { wallet, twitter, discord };
+      localStorage.setItem('galxe_user_info', JSON.stringify(userInfo));
+    });
+  </script></body>
+</html>
