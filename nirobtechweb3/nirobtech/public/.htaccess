@@ -1,0 +1,17 @@
+# Basic .htaccess rules for clean URLs
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /web3/nirobtech/public/ # !!! IMPORTANT: Adjust this if your project is not in a subfolder !!!
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# PHP settings (optional, can also be in php.ini)
+# php_value display_errors 1
+# php_value error_reporting E_ALL
+

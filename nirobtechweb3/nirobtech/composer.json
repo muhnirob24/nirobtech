@@ -1,0 +1,27 @@
+{
+    "name": "nirobtech/web3-automation",
+    "description": "A comprehensive Web3 Forensic and Developer Life Automation System.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your@example.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\": "src/"
+        },
+        "files": [
+            "_core/helpers.php"
+        ]
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-mysqli": "*"
+        // Add other dependencies here, e.g.,
+        // "web3p/web3.php": "^1.0",
+        // "guzzlehttp/guzzle": "^7.0"
+    }
+}

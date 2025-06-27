@@ -1,0 +1,75 @@
+/* General Styles */
+body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; line-height: 1.6; }
+header { background-color: #283747; color: #fff; padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+nav .logo a { color: #fff; text-decoration: none; font-size: 1.8rem; font-weight: bold; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+nav ul li { margin-left: 20px; }
+nav ul li a { color: #a9cce3; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+nav ul li a:hover { color: #fff; }
+main { max-width: 1200px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+footer { text-align: center; padding: 20px; margin-top: 40px; background-color: #283747; color: #a9cce3; font-size: 0.9rem; }
+
+/* Module Specific Styles */
+.module-section { margin-bottom: 30px; padding: 20px; border: 1px solid #eee; border-radius: 5px; background-color: #fafafa; }
+.module-section h2 { color: #0056b3; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #4a90e2, #63b8ff);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+.hero h1 { font-size: 3em; margin-bottom: 10px; }
+.hero p { font-size: 1.2em; margin-bottom: 30px; }
+.hero .btn {
+    background-color: #fff;
+    color: #4a90e2;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.hero .btn:hover { background-color: #eee; }
+
+/* Features Section */
+.features {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.features h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 30px;
+}
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.feature-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+.feature-item h3 {
+    color: #0056b3;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+.feature-item p {
+    font-size: 1em;
+    color: #666;
+}
+

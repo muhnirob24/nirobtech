@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: <?php echo APP_URL; ?>/sitemap.xml.php
