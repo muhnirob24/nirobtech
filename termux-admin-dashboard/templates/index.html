@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Termux Admin Dashboard</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #111; color: #0f0; }
+    input, textarea { width: 100%; background: #000; color: #0f0; border: 1px solid #0f0; }
+    .section { margin-bottom: 30px; }
+  </style>
+</head>
+<body>
+  <h1>📱 Termux Admin Dashboard</h1>
+
+  <div class="section">
+    <h2>🔋 Battery</h2>
+    <pre>{{ battery | tojson(indent=2) }}</pre>
+  </div>
+
+  <div class="section">
+    <h2>📱 Device Info</h2>
+    <pre>{{ device | tojson(indent=2) }}</pre>
+  </div>
+
+  <div class="section">
+    <h2>📋 Clipboard</h2>
+    <form method="POST" action="/set_clipboard">
+      <input name="clip" value="{{ clipboard }}">
+      <button type="submit">Update</button>
+    </form>
+  </div>
+
+  <div class="section">
+    <h2>💻 Run Shell Command</h2>
+    <form method="POST" action="/run">
+      <textarea name="cmd" rows="2">whoami</textarea>
+      <button type="submit">Execute</button>
+    </form>
+  </div>
+</body>
+</html>
